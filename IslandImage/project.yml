@@ -1,7 +1,7 @@
 name: IslandImage
 
 options:
-  bundleIdPrefix: com.example
+  bundleIdPrefix: com.laochrathrifts
   deploymentTarget:
     iOS: "17.0"
 
@@ -29,7 +29,7 @@ targets:
           - UIInterfaceOrientationPortrait
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.islandimage
+        PRODUCT_BUNDLE_IDENTIFIER: com.laochrathrifts.islandimage
         ASSETCATALOG_COMPILER_APPICON_NAME: ""
     dependencies:
       - target: IslandWidget
@@ -50,4 +50,4 @@ targets:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.islandimage.widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.laochrathrifts.islandimage.widget
