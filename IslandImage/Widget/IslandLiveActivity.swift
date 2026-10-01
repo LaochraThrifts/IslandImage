@@ -24,7 +24,7 @@ struct IslandLiveActivity: Widget {
                 }
             } compactLeading: {
                 // Left of the camera
-                islandImage.frame(width: 24, height: 24)
+                islandImage.frame(width: 28, height: 28)
             } compactTrailing: {
                 // Right of the camera (left empty on purpose)
                 EmptyView()
@@ -38,7 +38,7 @@ struct IslandLiveActivity: Widget {
     private var islandImage: some View {
         Image(islandImageName)
             .resizable()
+            .interpolation(.none)   // keeps pixel art crisp
             .scaledToFit()
-            .clipShape(Circle())
     }
 }
