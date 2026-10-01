@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: IslandImage
     steps:
       - name: Get the code
         uses: actions/checkout@v4
@@ -42,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: IslandImage-ipa
-          path: IslandImage.ipa
+          path: IslandImage/IslandImage.ipa
