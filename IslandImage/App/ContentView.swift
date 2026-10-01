@@ -37,13 +37,33 @@ struct ContentView: View {
                     .foregroundStyle(.red)
                     .multilineTextAlignment(.center)
             }
+
+            // Troubleshooting info — screenshot this if something isn't working
+            Text(diagnostics)
+                .font(.caption2.monospaced())
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.leading)
+                .padding(.top, 12)
         }
         .padding()
         .onAppear { refresh() }
     }
 
+    @State private var diagnostics = ""
+
     private func refresh() {
-        isRunning = !Activity<IslandAttributes>.activities.isEmpty
+        let activities = Activity<IslandAttributes>.activities
+        isRunning = !activities.isEmpty
+
+        let plugins = (try? FileManager.default.contentsOfDirectory(
+            atPath: Bundle.main.builtInPlugInsPath ?? "")) ?? []
+        let states = activities.map { "\($0.activityState)" }.joined(separator: ", ")
+
+        diagnostics = """
+        Live Activities enabled: \(ActivityAuthorizationInfo().areActivitiesEnabled)
+        Running activities: \(activities.count) [\(states)]
+        Widget extension: \(plugins.isEmpty ? "MISSING" : plugins.joined(separator: ", "))
+        """
     }
 
     private func start() {
